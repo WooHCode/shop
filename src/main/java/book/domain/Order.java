@@ -27,6 +27,27 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    public Order(Long id, Long memberId, LocalDateTime orderDate, OrderStatus status, Member member, List<OrderItem> orderItems) {
+        this.id = id;
+        this.memberId = memberId;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.member = member;
+        this.orderItems = orderItems;
+    }
+//    public void changeMember(Member member){
+//        this.member = member;
+//        member.getOrders().add(this);
+//    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
     public Long getId() {
         return id;
     }
