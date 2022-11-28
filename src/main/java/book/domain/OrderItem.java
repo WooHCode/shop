@@ -1,9 +1,6 @@
 package book.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class OrderItem {
@@ -18,6 +15,14 @@ public class OrderItem {
     private Long itemId;
     private int orderPrice;
     private int count;
+
+    @ManyToOne
+    @JoinColumn(name = "ORDER_ID")
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "ITEM_ID")
+    private Item item;
 
     public Long getId() {
         return id;
