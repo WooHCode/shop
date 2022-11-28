@@ -17,17 +17,7 @@ public class Main {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
 
-
         try {
-            Order order = new Order();
-            em.persist(order);
-
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-
-            em.persist(orderItem);
-
-
             tr.commit();
         } catch (Exception e) {
             tr.rollback();
