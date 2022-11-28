@@ -19,6 +19,9 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
+    public Member() {
+    }
+
     public Member(Long id, String name, String city, String street, String zipcode, List<Order> orders) {
         this.id = id;
         this.name = name;
