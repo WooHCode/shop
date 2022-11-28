@@ -12,9 +12,6 @@ public class Order {
     @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
-
-    @Column(name = "MEMBER_ID")
-    private Long memberId;
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
@@ -26,18 +23,11 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
-
-    public Order() {
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
     }
 
-    public Order(Long id, Long memberId, LocalDateTime orderDate, OrderStatus status, Member member, List<OrderItem> orderItems) {
-        this.id = id;
-        this.memberId = memberId;
-        this.orderDate = orderDate;
-        this.status = status;
-        this.member = member;
-        this.orderItems = orderItems;
-    }
 
     //    public void changeMember(Member member){
 //        this.member = member;
@@ -60,14 +50,6 @@ public class Order {
         this.id = id;
     }
 
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
-
     public LocalDateTime getOrderDate() {
         return orderDate;
     }
@@ -83,4 +65,6 @@ public class Order {
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
+
+
 }

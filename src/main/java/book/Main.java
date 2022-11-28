@@ -1,6 +1,8 @@
 package book;
 
 import book.domain.Member;
+import book.domain.Order;
+import book.domain.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -17,6 +19,15 @@ public class Main {
 
 
         try {
+            Order order = new Order();
+            em.persist(order);
+
+            OrderItem orderItem = new OrderItem();
+            orderItem.setOrder(order);
+
+            em.persist(orderItem);
+
+
             tr.commit();
         } catch (Exception e) {
             tr.rollback();

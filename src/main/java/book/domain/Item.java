@@ -15,9 +15,6 @@ public class Item {
 
     private int stockQuantity;
 
-    @OneToMany(mappedBy = "item")
-    private List<OrderItem> orderItems = new ArrayList<>();
-
     public Long getId() {
         return id;
     }
