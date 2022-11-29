@@ -2,7 +2,7 @@ package book.domain;
 
 import javax.persistence.*;
 @Entity
-public class Delivery {
+public class Delivery extends BaseEntity{
 
     @Id @GeneratedValue
     private Long id;
@@ -14,6 +14,6 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
-    @OneToOne(mappedBy = "delivery")
+    @OneToOne(mappedBy = "delivery",fetch = FetchType.LAZY)
     private Order order;
 }
