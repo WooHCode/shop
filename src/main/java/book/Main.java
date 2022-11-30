@@ -18,6 +18,8 @@ public class Main {
         tr.begin();
 
         try {
+            em.createQuery("select m from Member m", Member.class).getResultList();
+            em.clear();
             tr.commit();
         } catch (Exception e) {
             tr.rollback();
