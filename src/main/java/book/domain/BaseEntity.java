@@ -4,7 +4,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-public abstract class BaseEntity {
+public abstract class BaseEntity {  // abstract class는 실제 클래스로 사용되지는 않지만 클래스의 역활은 구현가능하다. 상속하여 사용가능, 공통 객체들을 공유가능
 
     private String createBy;
     private LocalDateTime createDate;
