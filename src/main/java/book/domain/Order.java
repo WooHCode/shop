@@ -23,11 +23,13 @@ public class Order extends BaseEntity{
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = ALL) // @xxxToOne은 지연로딩을 위해 FETCH.LAZY를 사용하고, 필요시에는 fetch join을 사용한다.
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
-    @OneToMany(mappedBy = "order", cascade = ALL)
+    @OneToMany(mappedBy = "order", cascade = ALL) // mapping되어있는 값의 변경을 감지하여 일괄 수정한다.
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    // 연관관계 편의 메서드
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);
